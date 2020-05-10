@@ -35,6 +35,8 @@
 
 https://github.com/Training360/locations-app
 
+https://hub.docker.com/repository/docker/training360/locations
+
 * MySQL indítása Dockerben
 
 ```
@@ -476,6 +478,8 @@ docker run --link locations:locations -v C:\newman:/etc/newman -t postman/newman
 * Port
 * Save requests to
 
+https://github.com/Training360/locations-app-client
+
 ```
 java -Dlocations.client.proxy.enabled=true -jar locations-app-client.jar
 ```
@@ -517,3 +521,45 @@ java -Dlocations.client.proxy.enabled=true -jar locations-app-client.jar
     * Contract tests
 * Observe
     * Monitors
+
+## Autentikáció
+
+```
+docker run -d --name jwt -p 8080:8080 training360/jwt
+```
+
+POST http://localhost:8080/api/auth
+
+```javascript
+{
+	"username": "user",
+	"password": "user"
+}
+```
+
+http://localhost:8080/api/hello
+
+Cookies
+
+## Automatikus bejelentkezés
+
+```javascript
+pm.sendRequest({
+  url: 'http://localhost:8080/api/auth',
+  method: 'POST',
+  header: 'headername1:value1',
+  body: {
+    mode: 'raw',
+    raw: JSON.stringify({
+	"username": "user",
+	"password": "user"
+})
+  }
+}, function (error, response) {
+    console.log(error ? err : response.json());
+
+    let cookie = response.headers.find(x => x.key == "Set-Cookie").value;
+    let token = cookie.substring(9, cookie.indexOf(";"));
+    console.log(token);
+});
+```
