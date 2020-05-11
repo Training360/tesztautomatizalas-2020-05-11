@@ -82,7 +82,7 @@ Vizsgáld meg a visszatérési értéket!
 ```javascript
 {
     "name":"Budapest",
-    "coords":"47.497912,19.040235",
+    "coords":"47.497912,19.040235"
 }
 ```
 
@@ -421,7 +421,7 @@ pm.global.get("username");
 
 ## Base64
 
-*[btoa.js](https://git.coolaj86.com/coolaj86/btoa.js.git)
+* [btoa.js](https://git.coolaj86.com/coolaj86/btoa.js.git)
 
 ```javascript
 let text = "Hello Postman";
@@ -505,6 +505,10 @@ java -Dlocations.client.proxy.enabled=true -jar locations-app-client.jar
 * Configuration
 * Next steps
 * Lefuttatja a teszteket is
+
+## Import
+
+* Pl. Swagger OpenAPI URL
 
 ## API fejlesztés
 
