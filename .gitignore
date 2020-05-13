@@ -1,0 +1,13 @@
+target
+
+.idea
+.mvn
+*.iml
+
+.settings
+.classpath
+.project
+
+__pycache__/
+geckodriver.log
+venv/
